@@ -1,17 +1,22 @@
 // This creates function named "fight"//
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth =100;
-var playerAttack= 60;
+var playerAttack= 10;
 var playerMoney= 10;
 console.log(playerName, playerHealth, playerAttack, playerMoney);
 
-var enemyName ="Roborto";
+var enemyNames =["Roborto", "Amy Android", "Robo Trumble"];
+console.log(enemyNames.length);
+for(var i=0; i< enemyNames.length; i++)
+    console.log(enemyNames[i]);
+    console.log(i);
+    console.log(enemyNames[i] + " is at " + i + " index")
 var enemyHealth=10;
 var enemyAttack=12;
 
 
 
-var fight =function() {
+var fight =function(enemyName) {
     window.alert("Welcome to Robot Gladiators");
     var promptFight = window.prompt ("Would you like to FIGHT or SKIP this battel? Enter 'FIGHT' or 'SKIP' to choose." );
  //if the player chose to fight then fight 
@@ -52,16 +57,13 @@ var fight =function() {
       else {
           fight();
       }
-    window.alert(playerName + " Has chosen to skip the fight!");
 } else{
     window.alert("You need to choose a valid Option. Try again!")
 }
 };
-fight();
+for(var i=0; i< enemyNames.length;  i++){
+    fight(enemyNames[i]);
+}
 
 
-console.log("the logs a string");
-//this will do math and log 20
-console.log(10+10);
-// what is this?
-console.log("our robot's name is " + playerName );
+
