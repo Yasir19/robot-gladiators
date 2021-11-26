@@ -137,8 +137,18 @@ var shop =function(){
         // Make attack damage random, using the robot's attack value as an upper limit (for example, if the player's attack is 10, their damage range is 7–10)
 
 };
+        // function to set name 
+        var getPlayerName = function(){
+            var name = "";
+            while (name === "" || name === null ) {
+                name = prompt ("What is your robot's name?");
+            }
+            console.log ("Your robot's name is" + name);
+            return name;
+        };
+// player info
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
