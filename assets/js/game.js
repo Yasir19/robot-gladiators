@@ -29,10 +29,16 @@ var fightOrSkip = function(){
   };
 // This creates function named "fight"//
 var fight =function(enemy) {
+    // keep track of who goes first
+    var isPlayerTurn =true;
+    if (Math.random() > 0.5){
+        isPlayerTurn = false;
+    }
     //repeat and execute as long as the enemy-robot is alive
     while(playerInfo.health>0 && enemy.health>0){
+        if (isPlayerTurn){
         //if the player like to fight or skip using fightOrShip function
-        if (fightOrSkip());
+        if (fightOrSkip()){
         // if true, leave the fight ny braking the lopo 
         break;
     }
@@ -45,11 +51,13 @@ var fight =function(enemy) {
   if (enemy.health <= 0){
       window.alert(enemy.name + " has died!");
       // award the player 10 dollar
-      playerInfo.attack=playerInfo.attack+10;
-    //   break;
+      playerInfo.money=playerInfo.money+10;
+      break;
   }else{
       window.alert(enemy.name + " still has " + enemy.health + " health left.");
   }
+  //player get attack first 
+}else{
  // generate random damage value based on player's attack power
    var damage = randomNumber (enemy.attack -3 , enemy.attack);
    // remove enemy's health by subtracting the amount we set in the damage variable
@@ -59,10 +67,14 @@ var fight =function(enemy) {
  //check playerInfo.health
  if (playerInfo.health <=0 ) {
      window.alert (playerInfo.name + " has died!");
-    //  break;
+     break;
  }else {
      window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
  }
+}
+//switch turn order for next round
+isPlayerTurn = !isPlayerTurn;
+    }
 };
 
 
