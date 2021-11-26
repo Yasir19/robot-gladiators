@@ -4,23 +4,30 @@ var randomNumber = function(min, max){
     return value;
 };
 var fightOrSkip = function(){
+
     //ask player if they'd like to fight or skip using fightOrSkip function
     var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+
      // Enter the conditional recursive function call here!
      if (promptFight === "" || promptFight === null){
          window.alert("You need to provide a valid answer! Please try again.");
          return fightOrSkip();
      }
+
       // convert promptFight to all lowercase so we can check with less options
       promptFight =promptFight.toLowerCase();
       if (promptFight === 'skip'){
+
           // confirm player wants to skip
           var confirmSkip =window.confirm("Are you sure you'd like to quit?");
+
           //if yes (true), Leave fight
           if (confirmSkip) {
               window.alert(playerInfo.name + 'has decided to skip this fight. Goodbye!');
+
               //subtract money from plaerMoney for skipping  and make sure it will not go into the negative
               playerInfo.money =Math.max(0, playerInfo.money - 10);
+              
               //return of the player want to leave
               return true;
           }
@@ -28,13 +35,14 @@ var fightOrSkip = function(){
         return false
   };
 // This creates function named "fight"//
-var fight =function(enemy) {
+var fight = function(enemy) {
     // keep track of who goes first
     var isPlayerTurn = true;
     //randomly change turn order
     if (Math.random() > 0.5){
         isPlayerTurn = false;
     }
+
     //repeat and execute as long as the enemy-robot is alive
     while(playerInfo.health>0 && enemy.health>0){
         if (isPlayerTurn){
